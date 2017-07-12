@@ -9,10 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let list  = ["08:30", "09:30", "09:30", "10:30","11:30","12:30","13:30","14:30"]
-
+    var list = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        list  = ["08:30", "09:30", "09:30", "10:30","11:30","12:30","13:30","14:30"]
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -32,7 +32,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cellTo")
+        
         cell.textLabel?.text = list[indexPath.row]
         cell.textLabel?.textAlignment = NSTextAlignment.center
         return cell
