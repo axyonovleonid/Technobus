@@ -12,7 +12,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var list = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        list  = ["08:30", "09:30", "09:30", "10:30","11:30","12:30","13:30","14:30"]
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -23,7 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return 0
     }
     
     
@@ -33,9 +32,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cellTo")
-        
-        cell.textLabel?.text = list[indexPath.row]
-        cell.textLabel?.textAlignment = NSTextAlignment.center
+//        
+//        cell.textLabel?.text = list[indexPath.row]
+//        cell.textLabel?.textAlignment = NSTextAlignment.center
         return cell
     }
     

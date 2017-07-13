@@ -9,9 +9,19 @@
 import UIKit
 
 class ScheduleViewController: UITableViewController {
-
+    var list=[String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        switch self.restorationIdentifier! {
+        case "toScheduleController":
+            list = ["11:30", "12:30"]
+        case "fromScheduleController":
+            list = ["10:30", "13:30"]
+        default:
+            break
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,23 +39,22 @@ class ScheduleViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return list.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        cell.textLabel?.text = list[indexPath.row]
+        cell.textLabel?.textAlignment = NSTextAlignment.center
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
