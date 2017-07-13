@@ -12,6 +12,7 @@
 		AC5CF97D1F1445A5006DE3C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5CF97B1F1445A5006DE3C7 /* Main.storyboard */; };
 		AC5CF97F1F1445A5006DE3C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC5CF97E1F1445A5006DE3C7 /* Assets.xcassets */; };
 		AC5CF9821F1445A5006DE3C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5CF9801F1445A5006DE3C7 /* LaunchScreen.storyboard */; };
+		B32694411F16A5C9000F70EF /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32694401F16A5C9000F70EF /* ScheduleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		AC5CF97E1F1445A5006DE3C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC5CF9811F1445A5006DE3C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC5CF9831F1445A5006DE3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B32694401F16A5C9000F70EF /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				AC5CF97E1F1445A5006DE3C7 /* Assets.xcassets */,
 				AC5CF9801F1445A5006DE3C7 /* LaunchScreen.storyboard */,
 				AC5CF9831F1445A5006DE3C7 /* Info.plist */,
+				B32694401F16A5C9000F70EF /* ScheduleViewController.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -91,7 +94,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = ReturnOnIntelligence;
 				TargetAttributes = {
 					AC5CF9731F1445A5006DE3C7 = {
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B32694411F16A5C9000F70EF /* ScheduleViewController.swift in Sources */,
 				AC5CF97A1F1445A5006DE3C7 /* ViewController.swift in Sources */,
 				AC5CF9781F1445A5006DE3C7 /* AppDelegate.swift in Sources */,
 			);
@@ -181,6 +185,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -230,6 +235,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -288,7 +294,7 @@
 				AC5CF9851F1445A5006DE3C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AC5CF9861F1445A5006DE3C7 /* Build configuration list for PBXNativeTarget "TableView" */ = {
 			isa = XCConfigurationList;
@@ -297,6 +303,7 @@
 				AC5CF9881F1445A5006DE3C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
