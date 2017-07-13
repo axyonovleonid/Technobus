@@ -10,19 +10,52 @@ import UIKit
 
 class ScheduleViewController: UITableViewController {
     var list=[String]()
+    struct TransferTime{
+        let time: String
+        let mask: Int
+        init(t: String, m: Int){
+            time = t
+            mask = m
+        }
+    }
+    
+    func getSchedule(id:String) -> [TransferTime]{
+        let filePath = "Users/leonid/Desktop/schedule.json"
+
+        
+        var schedule = [TransferTime]()
+        let data = try? Data.init(contentsOf: URL.init(fileURLWithPath: filePath))
+        do{
+            let json = try JSONSerialization.jsonObject(with: data!) as? [String: Any]
+            let toOffice = json![id] as? [[String:Any]]
+            for sched in toOffice! {
+                let t = sched["time"] as? String
+                let m = sched["mask"] as? NSNumber
+
+                schedule.append(TransferTime(t: t!, m: Int.init(m!)))
+            }
+            
+        } catch {
+            print("Error with JSON: \(error)")
+        }
+        return schedule
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        switch self.restorationIdentifier! {
-        case "toScheduleController":
-            list = ["11:30", "12:30"]
-        case "fromScheduleController":
-            list = ["10:30", "13:30"]
-        default:
-            break
+        let schedule = getSchedule(id: self.restorationIdentifier!)
+//        switch self.restorationIdentifier! {
+//        case "toScheduleController":
+//            list = ["11:30", "12:30"]
+//        case "fromScheduleController":
+//            list = ["10:30", "13:30"]
+//        default:
+//            break
+//        }
+        for sc in schedule{
+            list.append(sc.time)
         }
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

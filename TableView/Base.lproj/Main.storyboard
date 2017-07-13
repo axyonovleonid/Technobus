@@ -12,7 +12,7 @@
         <!--Schedule View Controller-->
         <scene sceneID="CQY-lw-XZa">
             <objects>
-                <tableViewController restorationIdentifier="fromScheduleController" id="Zxf-Ax-ZkT" customClass="ScheduleViewController" customModule="TableView" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="fromOffice" id="Zxf-Ax-ZkT" customClass="ScheduleViewController" customModule="TableView" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qsZ-p3-XqO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,7 +90,7 @@
         <!--Schedule View Controller-->
         <scene sceneID="BWI-MM-dVt">
             <objects>
-                <tableViewController restorationIdentifier="toScheduleController" id="TDc-yB-7RJ" customClass="ScheduleViewController" customModule="TableView" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="toOffice" id="TDc-yB-7RJ" customClass="ScheduleViewController" customModule="TableView" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gWG-MI-r4e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,7 +132,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BFv-Kl-HYU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="To" id="gtP-CY-t54"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="spJ-Hk-J1y">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="spJ-Hk-J1y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
