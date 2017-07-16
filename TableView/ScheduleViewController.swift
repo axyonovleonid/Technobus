@@ -9,7 +9,11 @@
 import UIKit
 
 class ScheduleViewController: UITableViewController {
-    var list=[String]()
+    var list = [String]()
+    var schedule = [TransferTime]()
+    var sw = UISwitch()
+    var switchCell: SwTableViewCell? = nil
+    
     struct TransferTime{
         let time: String
         let mask: Int
@@ -44,18 +48,14 @@ class ScheduleViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let schedule = getSchedule(id: self.restorationIdentifier!)
-//        switch self.restorationIdentifier! {
-//        case "toScheduleController":
-//            list = ["11:30", "12:30"]
-//        case "fromScheduleController":
-//            list = ["10:30", "13:30"]
-//        default:
-//            break
-//        }
+        let nib = UINib(nibName: "SwTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "swCell")
+        schedule = getSchedule(id: self.restorationIdentifier!)
+
         for sc in schedule{
             list.append(sc.time)
         }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -77,15 +77,48 @@ class ScheduleViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return list.count
+        return list.count+1
     }
 
     
+    func updateData(){
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm"
+        let time = dateFormatter.string(from: date as Date)
+        list = []
+        for sc in schedule {
+            let newTime = sc.time
+            if(sw.isOn && time < newTime) {
+                list.append(newTime)
+            }
+            else if(!sw.isOn){
+                list.append(newTime)
+            }
+        }
+        tableView.reloadData()
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = list[indexPath.row]
-        cell.textLabel?.textAlignment = NSTextAlignment.center
+        let cell:UITableViewCell
+        if (indexPath.row == 0){
+            if(switchCell == nil) {
+                cell = tableView.dequeueReusableCell(withIdentifier: "swCell") as! SwTableViewCell
+                switchCell = cell as? SwTableViewCell
+                switchCell?.customInit(self)
+                sw  = (switchCell?.sw)!
+            }
+            else{
+                cell = switchCell!
+            }
+        }
+        else {
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "swCell")
+            cell.textLabel?.text = list[indexPath.row-1]
+
+        }
         return cell
+
     }
  
 
