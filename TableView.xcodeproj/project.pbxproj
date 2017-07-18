@@ -8,22 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		AC5CF9781F1445A5006DE3C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF9771F1445A5006DE3C7 /* AppDelegate.swift */; };
-		AC5CF97A1F1445A5006DE3C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF9791F1445A5006DE3C7 /* ViewController.swift */; };
 		AC5CF97D1F1445A5006DE3C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5CF97B1F1445A5006DE3C7 /* Main.storyboard */; };
 		AC5CF97F1F1445A5006DE3C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC5CF97E1F1445A5006DE3C7 /* Assets.xcassets */; };
-		AC5CF9821F1445A5006DE3C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5CF9801F1445A5006DE3C7 /* LaunchScreen.storyboard */; };
 		B32694411F16A5C9000F70EF /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32694401F16A5C9000F70EF /* ScheduleViewController.swift */; };
+		B32694481F1AE923000F70EF /* SwTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32694461F1AE923000F70EF /* SwTableViewCell.swift */; };
+		B32694491F1AE923000F70EF /* SwTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B32694471F1AE923000F70EF /* SwTableViewCell.xib */; };
+		B326944C1F1D3DA1000F70EF /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326944A1F1D3DA1000F70EF /* TimeTableViewCell.swift */; };
+		B326944D1F1D3DA1000F70EF /* TimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B326944B1F1D3DA1000F70EF /* TimeTableViewCell.xib */; };
+		B3BC07321F1D7DD0006230CA /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BC07301F1D7DD0006230CA /* PickerTableViewCell.swift */; };
+		B3BC07331F1D7DD0006230CA /* PickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BC07311F1D7DD0006230CA /* PickerTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC5CF9741F1445A5006DE3C7 /* TableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5CF9771F1445A5006DE3C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC5CF9791F1445A5006DE3C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC5CF97C1F1445A5006DE3C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC5CF97E1F1445A5006DE3C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AC5CF9811F1445A5006DE3C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC5CF9831F1445A5006DE3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B32694401F16A5C9000F70EF /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		B32694461F1AE923000F70EF /* SwTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwTableViewCell.swift; sourceTree = "<group>"; };
+		B32694471F1AE923000F70EF /* SwTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwTableViewCell.xib; sourceTree = "<group>"; };
+		B326944A1F1D3DA1000F70EF /* TimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
+		B326944B1F1D3DA1000F70EF /* TimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeTableViewCell.xib; sourceTree = "<group>"; };
+		B3BC07301F1D7DD0006230CA /* PickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
+		B3BC07311F1D7DD0006230CA /* PickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +65,16 @@
 			isa = PBXGroup;
 			children = (
 				AC5CF9771F1445A5006DE3C7 /* AppDelegate.swift */,
-				AC5CF9791F1445A5006DE3C7 /* ViewController.swift */,
 				AC5CF97B1F1445A5006DE3C7 /* Main.storyboard */,
 				AC5CF97E1F1445A5006DE3C7 /* Assets.xcassets */,
-				AC5CF9801F1445A5006DE3C7 /* LaunchScreen.storyboard */,
 				AC5CF9831F1445A5006DE3C7 /* Info.plist */,
 				B32694401F16A5C9000F70EF /* ScheduleViewController.swift */,
+				B32694461F1AE923000F70EF /* SwTableViewCell.swift */,
+				B32694471F1AE923000F70EF /* SwTableViewCell.xib */,
+				B326944A1F1D3DA1000F70EF /* TimeTableViewCell.swift */,
+				B326944B1F1D3DA1000F70EF /* TimeTableViewCell.xib */,
+				B3BC07301F1D7DD0006230CA /* PickerTableViewCell.swift */,
+				B3BC07311F1D7DD0006230CA /* PickerTableViewCell.xib */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -126,7 +138,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC5CF9821F1445A5006DE3C7 /* LaunchScreen.storyboard in Resources */,
+				B3BC07331F1D7DD0006230CA /* PickerTableViewCell.xib in Resources */,
+				B326944D1F1D3DA1000F70EF /* TimeTableViewCell.xib in Resources */,
+				B32694491F1AE923000F70EF /* SwTableViewCell.xib in Resources */,
 				AC5CF97F1F1445A5006DE3C7 /* Assets.xcassets in Resources */,
 				AC5CF97D1F1445A5006DE3C7 /* Main.storyboard in Resources */,
 			);
@@ -139,8 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B326944C1F1D3DA1000F70EF /* TimeTableViewCell.swift in Sources */,
+				B3BC07321F1D7DD0006230CA /* PickerTableViewCell.swift in Sources */,
 				B32694411F16A5C9000F70EF /* ScheduleViewController.swift in Sources */,
-				AC5CF97A1F1445A5006DE3C7 /* ViewController.swift in Sources */,
+				B32694481F1AE923000F70EF /* SwTableViewCell.swift in Sources */,
 				AC5CF9781F1445A5006DE3C7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,14 +170,6 @@
 				AC5CF97C1F1445A5006DE3C7 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		AC5CF9801F1445A5006DE3C7 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC5CF9811F1445A5006DE3C7 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
