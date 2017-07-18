@@ -9,11 +9,14 @@
 import UIKit
 
 class ScheduleViewController: UITableViewController {
-    var list = [String]()
+    var list = [TransferTime]()
     var schedule = [TransferTime]()
     var sw = UISwitch()
     var switchCell: SwTableViewCell? = nil
-    
+    var sectionCount = [Int?]()
+    let sectionNames = ["Settings", "Time"]
+
+
     struct TransferTime{
         let time: String
         let mask: Int
@@ -45,16 +48,31 @@ class ScheduleViewController: UITableViewController {
         return schedule
     }
     
+ 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: "SwTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "swCell")
+        
+        let nibSw = UINib(nibName: "SwTableViewCell", bundle: nil)
+        tableView.register(nibSw, forCellReuseIdentifier: "swCell")
+        let nibTime = UINib(nibName: "TimeTableViewCell", bundle: nil)
+        tableView.register(nibTime, forCellReuseIdentifier: "timeCell")
+        let nibPicker = UINib(nibName: "PickerTableViewCell", bundle: nil)
+        tableView.register(nibPicker, forCellReuseIdentifier: "pickerCell")
+        
+        
+        
         schedule = getSchedule(id: self.restorationIdentifier!)
 
         for sc in schedule{
-            list.append(sc.time)
+            list.append(sc)
         }
+        tableView.estimatedRowHeight = 99.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+
+        sectionCount = [2, list.count]
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -72,50 +90,58 @@ class ScheduleViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return list.count+1
+        return sectionCount[section]!
     }
 
     
     func updateData(){
         let date = NSDate()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm"
+        dateFormatter.dateFormat = "HH:MM"
+        dateFormatter.locale = Locale.current
         let time = dateFormatter.string(from: date as Date)
         list = []
         for sc in schedule {
-            let newTime = sc.time
-            if(sw.isOn && time < newTime) {
-                list.append(newTime)
+            if(sw.isOn && time < sc.time) {
+                list.append(sc)
             }
             else if(!sw.isOn){
-                list.append(newTime)
+                list.append(sc)
             }
         }
         tableView.reloadData()
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {   return sectionNames[section]
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell
-        if (indexPath.row == 0){
-            if(switchCell == nil) {
-                cell = tableView.dequeueReusableCell(withIdentifier: "swCell") as! SwTableViewCell
-                switchCell = cell as? SwTableViewCell
-                switchCell?.customInit(self)
-                sw  = (switchCell?.sw)!
+        if (indexPath.section == 0){
+            if(indexPath.row == 0){
+                if(switchCell == nil) {
+                    cell = tableView.dequeueReusableCell(withIdentifier: "swCell") as! SwTableViewCell
+                    switchCell = cell as? SwTableViewCell
+                    switchCell?.customInit(self)
+                    sw  = (switchCell?.sw)!
+                }
+                else{
+                    cell = switchCell!
+                }
             }
-            else{
-                cell = switchCell!
+            else {
+                cell = tableView.dequeueReusableCell(withIdentifier: "pickerCell") as! PickerTableViewCell
             }
         }
         else {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "swCell")
-            cell.textLabel?.text = list[indexPath.row-1]
-
+            cell = tableView.dequeueReusableCell(withIdentifier: "timeCell") as! TimeTableViewCell
+            let timeCell = cell as? TimeTableViewCell
+            timeCell?.customInit(sc: list[indexPath.row])
         }
         return cell
 
@@ -168,3 +194,5 @@ class ScheduleViewController: UITableViewController {
     */
 
 }
+
+

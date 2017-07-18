@@ -22,12 +22,11 @@ class SwTableViewCell: UITableViewCell {
             sheduleViewController!.updateData()
         }
     }
-    
+
     @IBOutlet weak var sw: UISwitch!
     @IBOutlet weak var label: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,5 +38,7 @@ class SwTableViewCell: UITableViewCell {
     func customInit(_ svc: ScheduleViewController){
         sheduleViewController = svc
     }
-    
+
 }
+
+
