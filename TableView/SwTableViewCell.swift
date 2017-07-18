@@ -10,16 +10,16 @@ import UIKit
 
 class SwTableViewCell: UITableViewCell {
 
-    var sheduleViewController: ScheduleViewController?
+    var scheduleViewController: ScheduleViewController?
 
     @IBAction func onSwitched(_ sender: Any) {
         if(sw.isOn){
             label.text = "Show More"
-            sheduleViewController!.updateData()
+            scheduleViewController!.updateData(mask: (scheduleViewController?.dayMask)!)
         }
         else{
             label.text = "Show Less"
-            sheduleViewController!.updateData()
+            scheduleViewController!.updateData(mask: (scheduleViewController?.dayMask)!)
         }
     }
 
@@ -36,7 +36,7 @@ class SwTableViewCell: UITableViewCell {
     }
 
     func customInit(_ svc: ScheduleViewController){
-        sheduleViewController = svc
+        scheduleViewController = svc
     }
 
 }

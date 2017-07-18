@@ -13,16 +13,19 @@ class ScheduleViewController: UITableViewController {
     var schedule = [TransferTime]()
     var sw = UISwitch()
     var switchCell: SwTableViewCell? = nil
+    var pickerCell: PickerTableViewCell? = nil
     var sectionCount = [Int?]()
     let sectionNames = ["Settings", "Time"]
-
+    var dayMask = 255
 
     struct TransferTime{
         let time: String
         let mask: Int
-        init(t: String, m: Int){
+        var gone: Bool
+        init(t: String, m: Int, g: Bool){
             time = t
             mask = m
+            gone = g
         }
     }
     
@@ -39,7 +42,7 @@ class ScheduleViewController: UITableViewController {
                 let t = sched["time"] as? String
                 let m = sched["mask"] as? NSNumber
 
-                schedule.append(TransferTime(t: t!, m: Int.init(m!)))
+                schedule.append(TransferTime(t: t!, m: Int.init(m!), g: false))
             }
             
         } catch {
@@ -73,7 +76,8 @@ class ScheduleViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
 
         sectionCount = [2, list.count]
-        
+        updateData(mask: dayMask)
+       
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -99,21 +103,29 @@ class ScheduleViewController: UITableViewController {
     }
 
     
-    func updateData(){
+    func updateData(mask: Int){
+        
         let date = NSDate()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:MM"
+        dateFormatter.dateFormat = "HH:mm"
         dateFormatter.locale = Locale.current
         let time = dateFormatter.string(from: date as Date)
+        print(time)
         list = []
-        for sc in schedule {
-            if(sw.isOn && time < sc.time) {
-                list.append(sc)
-            }
-            else if(!sw.isOn){
-                list.append(sc)
+        for var sc in schedule {
+            if(sc.mask&mask > 0) {
+                if(sw.isOn && (time < sc.time)) {
+                    list.append(sc)
+                }
+                else if(!sw.isOn){
+                    if(time > sc.time) {
+                        sc.gone = true
+                    }
+                    list.append(sc)
+                }
             }
         }
+        sectionCount[1] = list.count
         tableView.reloadData()
     }
 
@@ -135,7 +147,14 @@ class ScheduleViewController: UITableViewController {
                 }
             }
             else {
-                cell = tableView.dequeueReusableCell(withIdentifier: "pickerCell") as! PickerTableViewCell
+                if(pickerCell == nil){
+                    cell = tableView.dequeueReusableCell(withIdentifier: "pickerCell") as! PickerTableViewCell
+                    pickerCell = cell as? PickerTableViewCell
+                    pickerCell?.scheduleViewController = self
+                }
+                else {
+                    cell = pickerCell!
+                }
             }
         }
         else {

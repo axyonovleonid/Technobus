@@ -20,13 +20,12 @@ class TimeTableViewCell: UITableViewCell {
     @IBOutlet weak var goneLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     override func awakeFromNib() {
-        let color = UIColor.init(red: 161.0/255.0, green: 40.0/255.0, blue: 48.0/255.0, alpha: 1.0)
-        
-        mon.textColor = color
-        tue.textColor = color
-        wed.textColor = color
-        thu.textColor = color
-        fri.textColor = color
+        let color = UIColor.darkGray
+        self.mon.textColor = color
+        self.tue.textColor = color
+        self.wed.textColor = color
+        self.thu.textColor = color
+        self.fri.textColor = color
         super.awakeFromNib()
         
         // Initialization code
@@ -41,22 +40,28 @@ class TimeTableViewCell: UITableViewCell {
         goneLabel.isHidden = true
         let time = sc.time
         let mask = sc.mask
+        goneLabel.isHidden = !sc.gone
         timeLabel.text = time
-        let color = UIColor.darkGray
-        if(mask>>0)&0b00000001 == 0b00000001 {
-            mon.textColor = color
+        
+        let color = UIColor.init(red: 161.0/255.0, green: 40.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+        if(mask>>0)%2 == 0 {
+//            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: mon.text!)
+//            attributeString.addAttribute(NSForegroundColorAttributeName, value: UIColor.brown, range: NSMakeRange(0, attributeString.length))
+//            mon.attributedText = attributeString
+            
+            self.mon.textColor = color
         }
-        if(mask>>1)&0b00000001 == 0b00000001 {
-            tue.textColor = color
+        if(mask>>1)%2 == 0 {
+            self.tue.textColor = color
         }
-        if(mask>>2)&0b00000001 == 0b00000001 {
-            wed.textColor = color
+        if(mask>>2)%2 == 0 {
+            self.wed.textColor = color
         }
-        if(mask>>3)&0b00000001 == 0b00000001 {
-            thu.textColor = color
+        if(mask>>3)%2 == 0 {
+            self.thu.textColor = color
         }
-        if(mask>>4)&0b00000001 == 0b00000001 {
-            fri.textColor = color
+        if(mask>>4)%2 == 0 {
+            self.fri.textColor = color
         }
     }
     

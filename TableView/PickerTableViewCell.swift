@@ -11,7 +11,9 @@ import UIKit
 class PickerTableViewCell: UITableViewCell {
     @IBOutlet weak var selectedDayTextField: UITextField!
     var selectedDay: String?
-    let days = ["Monday","Tuesday", "Wednesday", "Thursday", "Friday"]
+    var scheduleViewController: ScheduleViewController?
+    let days = ["Any","Monday","Tuesday", "Wednesday", "Thursday", "Friday"]
+    let dayPicker:UIPickerView? = nil
 
     override func awakeFromNib() {
         createDayPicker()
@@ -55,6 +57,7 @@ extension PickerTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         selectedDay = days[row]
         selectedDayTextField.text = selectedDay
+        scheduleViewController?.updateData(mask: (row == 0) ? 255 : 1<<(row-1))
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
