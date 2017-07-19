@@ -30,11 +30,12 @@ class ScheduleViewController: UITableViewController {
     }
     
     func getSchedule(id:String) -> [TransferTime]{
-        let filePath = "Users/leonid/Desktop/schedule.json"
-
-        
+//        let filePath = "https://github.com/axyonovleonid/Technobus/blob/Time/TableView/schedule.json"
+        let urlpath     = Bundle.main.path(forResource: "schedule", ofType: "json")
+        let filePath = URL.init(fileURLWithPath: urlpath!)
         var schedule = [TransferTime]()
-        let data = try? Data.init(contentsOf: URL.init(fileURLWithPath: filePath))
+        let data = try? Data.init(contentsOf: filePath)
+       // let data2 = try? Data.ini
         do{
             let json = try JSONSerialization.jsonObject(with: data!) as? [String: Any]
             let toOffice = json![id] as? [[String:Any]]
@@ -110,7 +111,7 @@ class ScheduleViewController: UITableViewController {
         dateFormatter.dateFormat = "HH:mm"
         dateFormatter.locale = Locale.current
         let time = dateFormatter.string(from: date as Date)
-        print(time)
+//        print(time)
         list = []
         for var sc in schedule {
             if(sc.mask&mask > 0) {

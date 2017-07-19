@@ -10,6 +10,7 @@
 		AC5CF9781F1445A5006DE3C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CF9771F1445A5006DE3C7 /* AppDelegate.swift */; };
 		AC5CF97D1F1445A5006DE3C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5CF97B1F1445A5006DE3C7 /* Main.storyboard */; };
 		AC5CF97F1F1445A5006DE3C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC5CF97E1F1445A5006DE3C7 /* Assets.xcassets */; };
+		B305677A1F1F622C0030BB9B /* schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = B30567791F1F622C0030BB9B /* schedule.json */; };
 		B32694411F16A5C9000F70EF /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32694401F16A5C9000F70EF /* ScheduleViewController.swift */; };
 		B32694481F1AE923000F70EF /* SwTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32694461F1AE923000F70EF /* SwTableViewCell.swift */; };
 		B32694491F1AE923000F70EF /* SwTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B32694471F1AE923000F70EF /* SwTableViewCell.xib */; };
@@ -25,6 +26,7 @@
 		AC5CF97C1F1445A5006DE3C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC5CF97E1F1445A5006DE3C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC5CF9831F1445A5006DE3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B30567791F1F622C0030BB9B /* schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schedule.json; sourceTree = "<group>"; };
 		B32694401F16A5C9000F70EF /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		B32694461F1AE923000F70EF /* SwTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwTableViewCell.swift; sourceTree = "<group>"; };
 		B32694471F1AE923000F70EF /* SwTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwTableViewCell.xib; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		AC5CF9761F1445A5006DE3C7 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				B30567791F1F622C0030BB9B /* schedule.json */,
 				AC5CF9771F1445A5006DE3C7 /* AppDelegate.swift */,
 				AC5CF97B1F1445A5006DE3C7 /* Main.storyboard */,
 				AC5CF97E1F1445A5006DE3C7 /* Assets.xcassets */,
@@ -140,6 +143,7 @@
 			files = (
 				B3BC07331F1D7DD0006230CA /* PickerTableViewCell.xib in Resources */,
 				B326944D1F1D3DA1000F70EF /* TimeTableViewCell.xib in Resources */,
+				B305677A1F1F622C0030BB9B /* schedule.json in Resources */,
 				B32694491F1AE923000F70EF /* SwTableViewCell.xib in Resources */,
 				AC5CF97F1F1445A5006DE3C7 /* Assets.xcassets in Resources */,
 				AC5CF97D1F1445A5006DE3C7 /* Main.storyboard in Resources */,

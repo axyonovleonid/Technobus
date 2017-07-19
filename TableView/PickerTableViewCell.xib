@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,16 +20,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Any" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TKJ-Rv-n8k">
-                        <rect key="frame" x="0.0" y="18" width="320" height="30"/>
+                        <rect key="frame" x="141" y="18" width="179" height="30"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vn-Td-kKY">
+                        <rect key="frame" x="8" y="22" width="91" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="TKJ-Rv-n8k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3Ks-fi-Ulb"/>
+                    <constraint firstItem="TKJ-Rv-n8k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="141" id="3Ks-fi-Ulb"/>
+                    <constraint firstItem="5vn-Td-kKY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="14" id="Au1-Lt-7Wp"/>
                     <constraint firstItem="TKJ-Rv-n8k" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="ICZ-eL-Gg8"/>
                     <constraint firstAttribute="bottom" secondItem="TKJ-Rv-n8k" secondAttribute="bottom" constant="19.5" id="MWM-pJ-r7r"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="5vn-Td-kKY" secondAttribute="bottom" constant="16.5" id="QNf-Tb-1f9"/>
+                    <constraint firstItem="5vn-Td-kKY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="efF-gK-eP3"/>
                     <constraint firstAttribute="trailing" secondItem="TKJ-Rv-n8k" secondAttribute="trailing" id="mWK-LD-RmR"/>
                 </constraints>
             </tableViewCellContentView>
