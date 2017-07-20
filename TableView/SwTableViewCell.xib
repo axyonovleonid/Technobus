@@ -19,28 +19,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GJh-6D-C7X">
-                        <rect key="frame" x="8" y="6.5" width="51" height="31"/>
-                        <connections>
-                            <action selector="onSwitched:" destination="KGk-i7-Jjw" eventType="valueChanged" id="wCx-l2-3IH"/>
-                        </connections>
-                    </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Less" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kn2-el-AvN">
-                        <rect key="frame" x="75" y="11.5" width="82" height="21"/>
+                        <rect key="frame" x="81" y="11" width="82" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GJh-6D-C7X">
+                        <rect key="frame" x="17" y="6" width="51" height="31"/>
+                        <connections>
+                            <action selector="onSwitched:" destination="KGk-i7-Jjw" eventType="valueChanged" id="wCx-l2-3IH"/>
+                        </connections>
+                    </switch>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="GJh-6D-C7X" secondAttribute="bottom" constant="6" id="5SQ-0Y-1eR"/>
-                    <constraint firstItem="GJh-6D-C7X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="KL6-2r-uWc"/>
+                    <constraint firstAttribute="bottom" secondItem="GJh-6D-C7X" secondAttribute="bottom" constant="7" id="5SQ-0Y-1eR"/>
+                    <constraint firstItem="GJh-6D-C7X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="KL6-2r-uWc"/>
                     <constraint firstItem="kn2-el-AvN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="Kah-P8-XQf"/>
                     <constraint firstItem="kn2-el-AvN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3.5" id="XqA-0h-qOY"/>
-                    <constraint firstItem="kn2-el-AvN" firstAttribute="leading" secondItem="GJh-6D-C7X" secondAttribute="trailing" constant="18" id="bWa-l6-jaJ"/>
+                    <constraint firstItem="kn2-el-AvN" firstAttribute="leading" secondItem="GJh-6D-C7X" secondAttribute="trailing" constant="15" id="bWa-l6-jaJ"/>
                     <constraint firstItem="GJh-6D-C7X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="dRt-0c-4Cj"/>
                     <constraint firstAttribute="bottomMargin" secondItem="kn2-el-AvN" secondAttribute="bottom" constant="3.5" id="vt5-um-CU5"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="kn2-el-AvN" secondAttribute="bottom" constant="59.5" id="yai-Sw-28g"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="kn2-el-AvN" secondAttribute="bottom" constant="4" id="yai-Sw-28g"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
