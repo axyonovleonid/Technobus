@@ -11,13 +11,14 @@ import UIKit
 class PickerTableViewCell: UITableViewCell {
     @IBOutlet weak var selectedDayTextField: UITextField!
     var selectedDay: String?
-    var scheduleViewController: ScheduleViewController?
+    var scheduleViewControllers: [ScheduleViewController]? = nil
     let days = ["Any","Monday","Tuesday", "Wednesday", "Thursday", "Friday"]
     let dayPicker:UIPickerView? = nil
 
     override func awakeFromNib() {
         createDayPicker()
         createToolbar()
+        scheduleViewControllers = []
         super.awakeFromNib()
         // Initialization code
     }
@@ -43,6 +44,11 @@ class PickerTableViewCell: UITableViewCell {
         
         selectedDayTextField.inputAccessoryView = toolbar
     }
+    
+    func setCallBack(contr:ScheduleViewController){
+        scheduleViewControllers?.append(contr)
+    }
+    
     func dismissKeyboard(){
         superview?.endEditing(true)
     }
@@ -57,7 +63,9 @@ extension PickerTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         selectedDay = days[row]
         selectedDayTextField.text = selectedDay
-        scheduleViewController?.updateData(mask: (row == 0) ? 255 : 1<<(row-1))
+        for scheduleViewController in scheduleViewControllers!{
+            scheduleViewController.updateData(mask: (row == 0) ? 255 : 1<<(row-1))
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

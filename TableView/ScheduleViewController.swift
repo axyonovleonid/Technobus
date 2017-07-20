@@ -30,8 +30,8 @@ class ScheduleViewController: UITableViewController {
     }
     
     func getSchedule(id:String) -> [TransferTime]{
-        let urlpath  = Bundle.main.path(forResource: "schedule", ofType: "json")
-        let filePath = URL.init(fileURLWithPath: urlpath!)
+//        let urlpath  = Bundle.main.path(forResource: "schedule", ofType: "json")
+//        let filePath = URL.init(fileURLWithPath: urlpath!)
         var schedule = [TransferTime]()
         let data:Data
         data = try! Data.init(contentsOf: URL.init(string: "http://195.62.49.18/schedule")!)
@@ -78,7 +78,13 @@ class ScheduleViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "swCell") as? SwTableViewCell
             ScheduleViewController.switchCell = cell
         }
-        ScheduleViewController.switchCell.setCallBack(contr: self)
+        
+        if(ScheduleViewController.pickerCell == nil){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "pickerCell") as! PickerTableViewCell
+            ScheduleViewController.pickerCell = cell 
+        }
+        ScheduleViewController.pickerCell?.setCallBack(contr: self)
+        ScheduleViewController.switchCell?.setCallBack(contr: self)
         sw  = (ScheduleViewController.switchCell?.sw)!
         
         
@@ -107,11 +113,12 @@ class ScheduleViewController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         dateFormatter.locale = Locale.current
+        dayMask = mask
         let time = dateFormatter.string(from: date as Date)
         list = []
         
         for var sc in schedule {
-            if(sc.mask&mask > 0) {
+            if(sc.mask&dayMask > 0) {
                 if(sw.isOn && (time < sc.time)) {
                     list.append(sc)
                 }
@@ -127,10 +134,14 @@ class ScheduleViewController: UITableViewController {
         tableView.reloadData()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        updateData(mask: dayMask)
-//        tableView.reloadData()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadSections(IndexSet.init(integer: 0), with: UITableViewRowAnimation.none)
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {   return sectionNames[section]
     }
@@ -139,19 +150,10 @@ class ScheduleViewController: UITableViewController {
         let cell:UITableViewCell
         if (indexPath.section == 0){
             if(indexPath.row == 0){
-//                cell = ScheduleViewController.switchCell!
-                ScheduleViewController.switchCell?.awakeFromNib()
                 return ScheduleViewController.switchCell!
             }
             else {
-                if(ScheduleViewController.pickerCell == nil){
-                    cell = tableView.dequeueReusableCell(withIdentifier: "pickerCell") as! PickerTableViewCell
-                    ScheduleViewController.pickerCell = cell as? PickerTableViewCell
-                    ScheduleViewController.pickerCell?.scheduleViewController = self
-                }
-                else {
-                    cell = ScheduleViewController.pickerCell!
-                }
+                return ScheduleViewController.pickerCell!
             }
         }
         else {
