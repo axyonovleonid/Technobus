@@ -12,12 +12,12 @@ class ScheduleViewController: UITableViewController {
     var list = [TransferTime]()
     var schedule = [TransferTime]()
     var sw = UISwitch()
-    var switchCell: SwTableViewCell? = nil
-    var pickerCell: PickerTableViewCell? = nil
+    static var switchCell: SwTableViewCell? = nil
+    static var pickerCell: PickerTableViewCell? = nil
     var sectionCount = [Int?]()
     let sectionNames = ["Settings", "Time"]
     var dayMask = 255
-
+//    var timeCells = [TimeTableViewCell]
     struct TransferTime{
         let time: String
         let mask: Int
@@ -30,13 +30,14 @@ class ScheduleViewController: UITableViewController {
     }
     
     func getSchedule(id:String) -> [TransferTime]{
-        let filePath = "Users/leonid/Desktop/schedule.json"
-
-        
+//        let urlpath  = Bundle.main.path(forResource: "schedule", ofType: "json")
+//        let filePath = URL.init(fileURLWithPath: urlpath!)
         var schedule = [TransferTime]()
-        let data = try? Data.init(contentsOf: URL.init(fileURLWithPath: filePath))
+        let data:Data
+        data = try! Data.init(contentsOf: URL.init(string: "http://195.62.49.18/schedule")!)
+
         do{
-            let json = try JSONSerialization.jsonObject(with: data!) as? [String: Any]
+            let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
             let toOffice = json![id] as? [[String:Any]]
             for sched in toOffice! {
                 let t = sched["time"] as? String
@@ -65,8 +66,6 @@ class ScheduleViewController: UITableViewController {
         let nibPicker = UINib(nibName: "PickerTableViewCell", bundle: nil)
         tableView.register(nibPicker, forCellReuseIdentifier: "pickerCell")
         
-        
-        
         schedule = getSchedule(id: self.restorationIdentifier!)
 
         for sc in schedule{
@@ -75,45 +74,51 @@ class ScheduleViewController: UITableViewController {
         tableView.estimatedRowHeight = 99.0
         tableView.rowHeight = UITableViewAutomaticDimension
 
+        if(ScheduleViewController.switchCell == nil) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "swCell") as? SwTableViewCell
+            ScheduleViewController.switchCell = cell
+        }
+        
+        if(ScheduleViewController.pickerCell == nil){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "pickerCell") as! PickerTableViewCell
+            ScheduleViewController.pickerCell = cell 
+        }
+        ScheduleViewController.pickerCell?.setCallBack(contr: self)
+        ScheduleViewController.switchCell?.setCallBack(contr: self)
+        sw  = (ScheduleViewController.switchCell?.sw)!
+        
+        
         sectionCount = [2, list.count]
         updateData(mask: dayMask)
-       
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return sectionCount[section]!
     }
 
     
     func updateData(mask: Int){
-        
         let date = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         dateFormatter.locale = Locale.current
+        dayMask = mask
         let time = dateFormatter.string(from: date as Date)
-        print(time)
         list = []
+        
         for var sc in schedule {
-            if(sc.mask&mask > 0) {
+            if(sc.mask&dayMask > 0) {
                 if(sw.isOn && (time < sc.time)) {
                     list.append(sc)
                 }
@@ -128,6 +133,15 @@ class ScheduleViewController: UITableViewController {
         sectionCount[1] = list.count
         tableView.reloadData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadSections(IndexSet.init(integer: 0), with: UITableViewRowAnimation.none)
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {   return sectionNames[section]
     }
@@ -136,25 +150,10 @@ class ScheduleViewController: UITableViewController {
         let cell:UITableViewCell
         if (indexPath.section == 0){
             if(indexPath.row == 0){
-                if(switchCell == nil) {
-                    cell = tableView.dequeueReusableCell(withIdentifier: "swCell") as! SwTableViewCell
-                    switchCell = cell as? SwTableViewCell
-                    switchCell?.customInit(self)
-                    sw  = (switchCell?.sw)!
-                }
-                else{
-                    cell = switchCell!
-                }
+                return ScheduleViewController.switchCell!
             }
             else {
-                if(pickerCell == nil){
-                    cell = tableView.dequeueReusableCell(withIdentifier: "pickerCell") as! PickerTableViewCell
-                    pickerCell = cell as? PickerTableViewCell
-                    pickerCell?.scheduleViewController = self
-                }
-                else {
-                    cell = pickerCell!
-                }
+                return ScheduleViewController.pickerCell!
             }
         }
         else {
@@ -163,7 +162,6 @@ class ScheduleViewController: UITableViewController {
             timeCell?.customInit(sc: list[indexPath.row])
         }
         return cell
-
     }
  
 

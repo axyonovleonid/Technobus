@@ -52,11 +52,13 @@
             </objects>
             <point key="canvasLocation" x="-1021" y="-223"/>
         </scene>
-        <!--From-->
+        <!--Navigation Controller-->
         <scene sceneID="soa-Ub-asA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oQe-v5-QsQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="From" id="Fzv-Hz-5qg"/>
+                    <tabBarItem key="tabBarItem" title="" image="metro.png" id="Fzv-Hz-5qg">
+                        <inset key="imageInsets" minX="9" minY="9" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CwU-Mv-MEc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -91,11 +93,13 @@
             </objects>
             <point key="canvasLocation" x="956" y="224"/>
         </scene>
-        <!--To-->
+        <!--Navigation Controller-->
         <scene sceneID="agx-t0-t3Q">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BFv-Kl-HYU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="To" id="gtP-CY-t54"/>
+                    <tabBarItem key="tabBarItem" title="" image="office.png" id="gtP-CY-t54">
+                        <inset key="imageInsets" minX="9" minY="9" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="spJ-Hk-J1y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -111,4 +115,8 @@
             <point key="canvasLocation" x="90" y="224"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="metro.png" width="64" height="64"/>
+        <image name="office.png" width="64" height="64"/>
+    </resources>
 </document>

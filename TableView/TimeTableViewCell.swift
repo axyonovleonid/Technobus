@@ -19,22 +19,14 @@ class TimeTableViewCell: UITableViewCell {
     @IBOutlet weak var mon: UILabel!
     @IBOutlet weak var goneLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    var days:[UILabel]? = nil
     override func awakeFromNib() {
-        let color = UIColor.darkGray
-        self.mon.textColor = color
-        self.tue.textColor = color
-        self.wed.textColor = color
-        self.thu.textColor = color
-        self.fri.textColor = color
+        days = [mon, tue, wed, thu, fri]
         super.awakeFromNib()
-        
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     func customInit(sc:ScheduleViewController.TransferTime){
         goneLabel.isHidden = true
@@ -42,27 +34,32 @@ class TimeTableViewCell: UITableViewCell {
         let mask = sc.mask
         goneLabel.isHidden = !sc.gone
         timeLabel.text = time
-        
+        let dayNubmer = (Date().dayNumberOfWeek()!+5)%7
+        let count = days?.count
         let color = UIColor.init(red: 161.0/255.0, green: 40.0/255.0, blue: 48.0/255.0, alpha: 1.0)
-        if(mask>>0)%2 == 0 {
-//            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: mon.text!)
-//            attributeString.addAttribute(NSForegroundColorAttributeName, value: UIColor.brown, range: NSMakeRange(0, attributeString.length))
-//            mon.attributedText = attributeString
-            
-            self.mon.textColor = color
+        for i in 0..<count! {
+            if(mask>>i)%2 == 0{
+                days?[i].textColor = color
+            }
+            else {
+                days?[i].textColor = UIColor.darkGray
+            }
         }
-        if(mask>>1)%2 == 0 {
-            self.tue.textColor = color
+        if(mask>>dayNubmer)%2 == 0 {
+            timeLabel.textColor = UIColor.lightGray
+            goneLabel.text = "Not today"
         }
-        if(mask>>2)%2 == 0 {
-            self.wed.textColor = color
-        }
-        if(mask>>3)%2 == 0 {
-            self.thu.textColor = color
-        }
-        if(mask>>4)%2 == 0 {
-            self.fri.textColor = color
+        else {
+            timeLabel.textColor = UIColor.black
+            goneLabel.text = "Gone"
+
         }
     }
     
+}
+
+extension Date {
+    func dayNumberOfWeek() -> Int? {
+        return Calendar.current.dateComponents([.weekday], from: self).weekday
+    }
 }
